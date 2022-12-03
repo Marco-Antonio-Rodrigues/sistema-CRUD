@@ -57,7 +57,12 @@ void cadastrar_aluno(int matricula,char* nome,char* numero, char* email,int quan
 
 aluno remover_aluno(int matricula);
 
-void editar_aluno(int matricula);
+// void editar_aluno(int matricula){ 
+//     aluno * aluno_editado = buscar_dados_aluno(raiz , matricula);
+//     while (1){
+
+//     }
+// }
 
 void imprimir_aluno(int matricula);
 
@@ -121,6 +126,43 @@ int main(){
     FILE* banco_de_dados = fopen("banco_de_dados.txt","r");
     FILE* backup = fopen("backup.txt","w");
     read_banco_de_dados(banco_de_dados);
+    // editar_aluno(511354);
+    // int escolha = 0;
+    // while (1){
+    //     printf("------MENU------\n\n1 - adicionar aluno\n2 - editar aluno \n3 - remover aluno\n4 - ver aluno\n5 - sair\n\n");
+    //     scanf("%i",&escolha);
+        
+    //     if(escolha == 1){
+    //         int aux, matricula, codigo_disciplina;
+    //         float nota_final_disciplina;
+    //         char nome[200], numero[200], email[200],nome_disciplina[200] ;  
+    //         endereco* endereco_aluno;
+    //         disciplina* disciplinas = malloc(sizeof(disciplina));
+    //         scanf("%i",&matricula);
+    //         scanf("%s",nome);
+    //         scanf("%s",numero);
+    //         scanf("%s",email);
+    //         endereco_aluno = malloc(sizeof(endereco_aluno));
+    //         endereco_aluno->nome_rua = malloc(sizeof(char)*200);
+    //         scanf("%i",&endereco_aluno->numero_casa);
+    //         scanf("%s",endereco_aluno->nome_rua);
+    //         scanf("%i",&endereco_aluno->cep);
+    //         cadastrar_aluno(matricula,nome,numero,email,0,disciplinas,endereco_aluno);
+    //     }else if(escolha == 2){
+    //         int matricula;
+    //         printf("\nDigite a matricula: ");
+    //         scanf("%i",&matricula);
+    //         editar_aluno(matricula);
+    //     }else if(escolha == 3){
+
+    //     }else if(escolha == 4){
+
+    //     }else if(escolha == 5){
+    //         printf("\ntchau!");
+    //         break;
+    //     }
+    
+    // }
     write_banco_de_dados(backup);
     fclose(banco_de_dados);
     fclose(backup);
