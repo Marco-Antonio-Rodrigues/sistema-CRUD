@@ -57,12 +57,91 @@ void cadastrar_aluno(int matricula,char* nome,char* numero, char* email,int quan
 
 aluno remover_aluno(int matricula);
 
-// void editar_aluno(int matricula){ 
-//     aluno * aluno_editado = buscar_dados_aluno(raiz , matricula);
-//     while (1){
+void editar_aluno(int matricula){ 
+    aluno * aluno_editado = buscar_dados_aluno(raiz , matricula);
+    while (1){
+        int comando = 0, sub_comando = 0;
+        int novo_inteiro;
+        float novo_float;
+        char nova_str[200];
+        printf("Digite o que deseja acessar");
+        printf("\n1-Aluno\n2- Disciplinas\n3- Sair\n");
+        scanf("%i", &comando);
+        if (comando == 1){
+            printf("\nDigite o que deseja acessar: \n");
+            printf("\n1-Matricula\n2-Nome\n3-Num.TEL \n4-Email \n5-Num.Casa \n6-Rua \n7- CEP\n");
+            scanf("%i", &sub_comando);
+            if(sub_comando==1){
+                printf("\nDigite a nova matricula: ");
+                scanf("%i", &novo_inteiro);
+                printf("\nMatricula Atualizada");
+                aluno_editado -> matricula=novo_inteiro;
+            }else if(sub_comando==2){
+                printf("\nDigite o novo nome: ");
+                scanf("%s", nova_str);
+                printf("\nNome Atualizado");
+                strcpy(aluno_editado -> nome_aluno,nova_str);
+            }else if(sub_comando==3){
+                printf("\nDigite o novo numero de telefone: ");
+                scanf("%s", nova_str);
+                printf("\nNumero de Tel Atualizado");
+                strcpy(aluno_editado -> numero_aluno,nova_str);
+            }else if(sub_comando==4){
+                printf("\nDigite o novo email: ");
+                scanf("%s", nova_str);
+                printf("\nEmail Atualizado");
+                strcpy(aluno_editado -> email_aluno , nova_str);
+            }else if(sub_comando==5){
+                printf("\nDigite o novo numero da casa: ");
+                scanf("%i", &novo_inteiro);
+                printf("\nNumero da casa Atualizado");
+                aluno_editado -> endereco_aluno-> numero_casa = novo_inteiro;
+            }else if(sub_comando==6){
+                printf("\nDigite o novo nome da rua: ");
+                scanf("%s", nova_str);
+                printf("\nNome da rua atualizado");
+                strcpy(aluno_editado -> endereco_aluno-> nome_rua,nova_str);
+            }else if(sub_comando==7){
+                printf("\nDigite o novo numero do cep: ");
+                scanf("%i", &novo_inteiro);
+                printf("\nCEP atualizado\n");
+                aluno_editado -> endereco_aluno-> cep = novo_inteiro;
+            }
+        }else if(comando==2){
+            int y;
+            for(y=0; y<aluno_editado->quantidade_disciplinas;y++){
+                printf("\n%i-%s",y,aluno_editado->disciplinas[y]->nome_disciplina);
+            }
+            printf("Escolha a Disciplina: ");
+            scanf("%i", &y);
+            printf("\nDigite o que deseja acessar: \n");
+            printf("\n1-Codigo da disciplina\n2-Nome da disciplina\n3-Nota da Disciplina");
+            scanf("%i", &sub_comando);
+            if(sub_comando==1){
+                printf("\nDigite o novo Cod. Da Disc: ");
+                scanf("%i", &novo_inteiro);
+                aluno_editado->disciplinas[y]->codigo_disciplina = novo_inteiro;
+                printf("\nCod. Atualizado");
+                
+            }else if(sub_comando==2){
+                printf("\nDigite o novo nome da Disc: ");
+                scanf("%s", nova_str);
+                strcpy(aluno_editado -> disciplinas[y] -> nome_disciplina, nova_str);
+                printf("\nNome Atualizado");
+            }else if(sub_comando==3){
+                printf("\nDigite a nova nota da Disc: ");
+                scanf("%f", &novo_float);
+                aluno_editado->disciplinas[y]->nota_final_disciplina = novo_float;
+                printf("\nNota Atualizada");
+            }
+        }else if(comando ==3){
+            break;
+        }
+           
+        
+        }
+        }
 
-//     }
-// }
 
 void imprimir_aluno(int matricula);
 
@@ -126,7 +205,7 @@ int main(){
     FILE* banco_de_dados = fopen("banco_de_dados.txt","r");
     FILE* backup = fopen("backup.txt","w");
     read_banco_de_dados(banco_de_dados);
-    // editar_aluno(511354);
+    editar_aluno(511354);
     // int escolha = 0;
     // while (1){
     //     printf("------MENU------\n\n1 - adicionar aluno\n2 - editar aluno \n3 - remover aluno\n4 - ver aluno\n5 - sair\n\n");

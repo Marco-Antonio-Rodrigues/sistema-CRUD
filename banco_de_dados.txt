@@ -1,4 +1,4 @@
-2
+1
 511354
 marco
 85994189459
@@ -14,13 +14,3 @@ estrutura_de_dados
 laboratorio_de_programacao
 9.00
 511355
-daniel
-88888888888
-daniel@gmail.com
-824
-rua_santiago
-639999
-1
-17
-estrutura_de_dados
-10.00
