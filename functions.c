@@ -105,9 +105,12 @@ aluno* remover_aluno(aluno *raiz, int matricula) {
 
 void editar_aluno(int matricula){ 
     aluno * aluno_editado = buscar_dados_aluno(raiz , matricula);
-    while (1){
+     if(aluno_editado->matricula != matricula){
+        printf("\nAluno não encontrado");
+    }else{
+        while (1){
+        printf("\nDigite o que deseja acessar\n");
         int comando = 0, sub_comando = 0;
-        printf("Digite o que deseja acessar");
         printf("\n1-Aluno\n2- Disciplinas\n3- Sair\n");
         scanf("%i", &comando);
         if (comando == 1){
@@ -117,7 +120,7 @@ void editar_aluno(int matricula){
             if(sub_comando==1){
                 printf("\nDigite a nova matricula: ");
                 scanf("%i", &aluno_editado -> matricula);
-                printf("\nMatricula Atualizada");
+                printf("\nMatricula Atualizada\n");
             }else if(sub_comando==2){
                 printf("\nDigite o novo nome: ");
                 scanf("%s", aluno_editado -> nome_aluno);
@@ -177,10 +180,12 @@ void editar_aluno(int matricula){
         }
         }
 
+    }
+
 
 void imprimir_aluno(int matricula){
     aluno* aluno_impresso = buscar_dados_aluno(raiz, matricula);
-    if(aluno_impresso == NULL){
+    if(aluno_impresso->matricula != matricula){
         printf("\nAluno não encontrado");
     }else{
         printf("\nMatricula:%i",aluno_impresso -> matricula);
@@ -252,7 +257,7 @@ void write_banco_de_dados(FILE *backup){
 int main(){
     FILE* banco_de_dados = fopen("banco_de_dados.txt","r");
     FILE* backup = fopen("backup.txt","w");
-    // read_banco_de_dados(banco_de_dados);
+    read_banco_de_dados(banco_de_dados);
     int matricula, menu;
     
     while (1){
@@ -297,7 +302,7 @@ int main(){
             scanf("%i",&matricula);
             imprimir_aluno(matricula);
         }else if(menu == 5){//sair
-            printf("\nFazendo Backup...encerrando sessao.");
+            printf("\nFazendo Backup...encerrando sessao.\n");
             break;
         }
     menu = 0;
