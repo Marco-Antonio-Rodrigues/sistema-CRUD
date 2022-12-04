@@ -40,7 +40,7 @@ void cadastrar_aluno(int matricula,char* nome,char* numero, char* email,int quan
 // você deve receber como parâmetro a matrícula de um aluno e remover a nó da Árvore
 // Binária de Busca que contenha esta matrícula.
 // retorna o aluno removido
-aluno remover_aluno(int matricula);
+*aluno remover_aluno(aluno *raiz, int matricula);
 
 // você deve receber como parâmetro a matrícula de um aluno e encontrar o nó da
 // Árvore Binária de Busca que contenha esta matrícula. Após encontrar o nó, você deve perguntar 
