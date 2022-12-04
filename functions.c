@@ -55,53 +55,7 @@ void cadastrar_aluno(int matricula,char* nome,char* numero, char* email,int quan
     }
 }
 
-aluno* remover_aluno(aluno *raiz, int matricula) {
-    if(raiz == NULL){
-        printf("Valor nao encontrado!\n");
-        return NULL;
-    } else { // procura o nó a remover_aluno
-        if(raiz->matricula == matricula) {
-            // remove nós folhas (nós sem filhos)
-            if(raiz->filho_esq == NULL && raiz->filho_dir == NULL) {
-                free(raiz);
-                quantidade_alunos--;
-                printf("Elemento folha removido: %d !\n", matricula);
-                return NULL;
-            }
-            else{
-                // remover_aluno nós que possuem dois 2 filho
-                if(raiz->filho_esq != NULL && raiz->filho_dir != NULL){
-                    aluno *aux = raiz->filho_esq; // subárvore à filho_esq
-                    while(aux->filho_dir != NULL)
-                        aux = aux->filho_dir; // obtêm o nó mais a filho_dir
-                    raiz->matricula = aux->matricula;
-                    aux->matricula = matricula;
-                    printf("Elemento trocado: %d !\n", matricula);
-                    raiz->filho_esq = remover_aluno(raiz->filho_esq, matricula);
-                    return raiz;
-                }
-                else{
-                    // remover_aluno nós que possuem apenas 1 filho
-                    aluno *aux;
-                    if(raiz->filho_esq != NULL)
-                        aux = raiz->filho_esq;
-                    else
-                        aux = raiz->filho_dir;
-                    free(raiz);
-                    quantidade_alunos--;
-                    printf("Elemento com 1 filho removido: %d !\n", matricula);
-                    return aux;
-                }
-            }
-        } else {
-            if(matricula < raiz->matricula)
-                raiz->filho_esq = remover_aluno(raiz->filho_esq, matricula);
-            else
-                raiz->filho_dir = remover_aluno(raiz->filho_dir, matricula);
-            return raiz;
-        }
-    }
-}
+aluno remover_aluno(int matricula);
 
 void editar_aluno(int matricula){ 
     aluno * aluno_editado = buscar_dados_aluno(raiz , matricula);
