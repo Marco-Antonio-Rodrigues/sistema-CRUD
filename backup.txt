@@ -1,6 +1,6 @@
 1
 511354
-marco
+buceta
 85994189459
 marco@gmail.com
 1230
@@ -8,8 +8,8 @@ rua_sebastiao
 638888
 2
 17
-cageui
-1.000000
+estrutura_de_dados
+10.000000
 18
 laboratorio_de_programacao
 9.000000

@@ -205,45 +205,56 @@ int main(){
     FILE* banco_de_dados = fopen("banco_de_dados.txt","r");
     FILE* backup = fopen("backup.txt","w");
     read_banco_de_dados(banco_de_dados);
-    editar_aluno(511354);
-    // int escolha = 0;
-    // while (1){
-    //     printf("------MENU------\n\n1 - adicionar aluno\n2 - editar aluno \n3 - remover aluno\n4 - ver aluno\n5 - sair\n\n");
-    //     scanf("%i",&escolha);
-        
-    //     if(escolha == 1){
-    //         int aux, matricula, codigo_disciplina;
-    //         float nota_final_disciplina;
-    //         char nome[200], numero[200], email[200],nome_disciplina[200] ;  
-    //         endereco* endereco_aluno;
-    //         disciplina* disciplinas = malloc(sizeof(disciplina));
-    //         scanf("%i",&matricula);
-    //         scanf("%s",nome);
-    //         scanf("%s",numero);
-    //         scanf("%s",email);
-    //         endereco_aluno = malloc(sizeof(endereco_aluno));
-    //         endereco_aluno->nome_rua = malloc(sizeof(char)*200);
-    //         scanf("%i",&endereco_aluno->numero_casa);
-    //         scanf("%s",endereco_aluno->nome_rua);
-    //         scanf("%i",&endereco_aluno->cep);
-    //         cadastrar_aluno(matricula,nome,numero,email,0,disciplinas,endereco_aluno);
-    //     }else if(escolha == 2){
-    //         int matricula;
-    //         printf("\nDigite a matricula: ");
-    //         scanf("%i",&matricula);
-    //         editar_aluno(matricula);
-    //     }else if(escolha == 3){
-
-    //     }else if(escolha == 4){
-
-    //     }else if(escolha == 5){
-    //         printf("\ntchau!");
-    //         break;
-    //     }
+    int matricula, menu;
     
-    // }
+    while (1){
+        printf("\n------MENU------\n\n1 - adicionar aluno\n2 - editar aluno \n3 - remover aluno\n4 - ver aluno\n5 - sair\n\n");
+        scanf("%i",&menu);
+        
+        if(menu == 1){ //adicionar aluno ok
+            int aux, matricula, codigo_disciplina ,quantidade_disciplinas;
+            float nota_final_disciplina;
+            char nome[200], numero[200], email[200],nome_disciplina[200] ;  
+            endereco* endereco_aluno = malloc(sizeof(endereco_aluno));
+            endereco_aluno->nome_rua = malloc(sizeof(char)*200);
+
+            printf("\nDigite a matricula: "); scanf("%i",&matricula);
+            printf("\nDigite o nome: "); scanf("%s",nome);
+            printf("\nDigite o numero: "); scanf("%s",numero);
+            printf("\nDigite o email: "); scanf("%s",email);
+            printf("\nDigite o numero da casa: "); scanf("%i",&endereco_aluno->numero_casa);
+            printf("\nDigite o nome da rua: "); scanf("%s",endereco_aluno->nome_rua);
+            printf("\nDigite o cep: "); scanf("%i",&endereco_aluno->cep);
+            printf("\nDigite a quantidade de disciplinas: "); scanf("%i",&quantidade_disciplinas);
+            disciplina** disciplinas = malloc(sizeof(disciplina)*quantidade_disciplinas);
+            for(int y = 0; y < quantidade_disciplinas;y++){
+            disciplinas[y] = malloc(sizeof(disciplina));
+            disciplinas[y]->nome_disciplina = malloc(sizeof(char)*200);
+            printf("\nDigite o codigo da disciplina: "); scanf("%i",&disciplinas[y]->codigo_disciplina);
+            printf("\nDigite o nome da disciplina: "); scanf("%s",disciplinas[y]->nome_disciplina);
+            printf("\nDigite a nota final da disciplina: "); scanf("%f",&disciplinas[y]->nota_final_disciplina);
+        }
+            cadastrar_aluno(matricula,nome,numero,email,quantidade_disciplinas,disciplinas,endereco_aluno);
+        
+        }else if(menu == 2){//editar aluno 
+            printf("\nDigite a matricula: ");
+            scanf("%i",&matricula);
+            editar_aluno(matricula);
+        }else if(menu == 3){//remover aluno
+            printf("\nDigite a matricula: ");
+            scanf("%i",&matricula);
+            // remover_aluno(raiz,matricula);
+        }else if(menu == 4){//ver aluno
+            printf("\nDigite a matricula: ");
+            scanf("%i",&matricula);
+            //imprimir aluno
+        }else if(menu == 5){//sair
+            printf("\nFazendo Backup...encerrando sessao.");
+            break;
+        }
+    menu = 0;
+    }
     write_banco_de_dados(backup);
-    fclose(banco_de_dados);
-    fclose(backup);
+    fclose(banco_de_dados); fclose(backup);
   return 0;
 }
