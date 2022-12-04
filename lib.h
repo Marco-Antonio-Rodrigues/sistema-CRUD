@@ -56,6 +56,18 @@ void editar_aluno(int matricula);
 // ordenar o vetor, antes de imprimi-lo.
 void imprimir_aluno(int matricula);
 
+// função que realiza a troca entre duas disciplinas
+void troca(disciplina** vet, int i, int j);
+
+// particiona e retorna o índice do pivô
+int particiona(disciplina** vet, int inicio, int fim);
+
+// escolhe um pivô aleatório para evitar o pior caso do quicksort
+int pivo(disciplina** vet, int inicio, int fim);
+
+// ordena as disciplinas em ordem decrescente pelo valor da nota
+void quick_sort(disciplina** vet, int inicio, int fim);
+
 // busca o aluno na arvore e retorna a struct aluno
 aluno* buscar_dados_aluno(aluno* raiz,int matricula);
 

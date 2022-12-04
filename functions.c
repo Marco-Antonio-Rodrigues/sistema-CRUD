@@ -14,7 +14,7 @@ aluno* buscar_dados_aluno(aluno* raiz, int matricula){
         }else{//esq esta vazia
             return raiz; //pai do elemento que não foi encontrado
         }
-    }else{//buscar no lado dir
+    }else{//buscar no lado direito
         if(raiz->filho_dir != NULL){
             return buscar_dados_aluno(raiz->filho_dir,matricula);
         }else{//dir esta vazia
@@ -180,7 +180,7 @@ void editar_aluno(int matricula){
     }
 }
 
-// função que realiza a troca entre duas disciplinas
+
 void troca(disciplina** vet, int i, int j){
 	disciplina* aux = malloc(sizeof(disciplina));
     aux->nome_disciplina = malloc(sizeof(char)*200);
@@ -223,7 +223,6 @@ int particiona(disciplina** vet, int inicio, int fim){
 	return pivo_indice;
 }
 
-// escolhe um pivô aleatório para evitar o pior caso do quicksort
 int pivo(disciplina** vet, int inicio, int fim){
 	// seleciona um número entre fim (inclusive) e inicio (inclusive)
 	int pivo_indice = (rand() % (fim - inicio + 1)) + inicio;
@@ -261,10 +260,12 @@ void imprimir_aluno(int matricula){
         printf("\nNumero da casa: %i", aluno_impresso->endereco_aluno->numero_casa);
         quick_sort(aluno_impresso->disciplinas,0,(aluno_impresso->quantidade_disciplinas)-1);
         for(int i = 0; i < aluno_impresso->quantidade_disciplinas ;i++){
-            printf("\n%i",aluno_impresso->disciplinas[i]->codigo_disciplina);
-            printf("\n%s",aluno_impresso->disciplinas[i]->nome_disciplina);
-            printf("\n%f",aluno_impresso->disciplinas[i]->nota_final_disciplina);
+            printf("\n\n%s",aluno_impresso->disciplinas[i]->nome_disciplina);
+            printf("\nNota Final:%f",aluno_impresso->disciplinas[i]->nota_final_disciplina);
+            printf("\nCodigo: %i",aluno_impresso->disciplinas[i]->codigo_disciplina);
         }
+        printf(("\n"));
+
     }
 }
 void read_banco_de_dados(FILE *banco_de_dados){//ok
