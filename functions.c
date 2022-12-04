@@ -109,78 +109,141 @@ void editar_aluno(int matricula){
         printf("\nAluno não encontrado");
     }else{
         while (1){
-        printf("\nDigite o que deseja acessar\n");
-        int comando = 0, sub_comando = 0;
-        printf("\n1-Aluno\n2- Disciplinas\n3- Sair\n");
-        scanf("%i", &comando);
-        if (comando == 1){
-            printf("\nDigite o que deseja acessar: \n");
-            printf("\n1-Matricula\n2-Nome\n3-Num.TEL \n4-Email \n5-Num.Casa \n6-Rua \n7- CEP\n8-Sair\n");
-            scanf("%i", &sub_comando);
-            if(sub_comando==1){
-                printf("\nDigite a nova matricula: ");
-                scanf("%i", &aluno_editado -> matricula);
-                printf("\nMatricula Atualizada\n");
-            }else if(sub_comando==2){
-                printf("\nDigite o novo nome: ");
-                scanf("%s", aluno_editado -> nome_aluno);
-                printf("\nNome Atualizado");
-            }else if(sub_comando==3){
-                printf("\nDigite o novo numero de telefone: ");
-                scanf("%s", aluno_editado -> numero_aluno);
-                printf("\nNumero de Tel Atualizado");
-            }else if(sub_comando==4){
-                printf("\nDigite o novo email: ");
-                scanf("%s", aluno_editado -> email_aluno);
-                printf("\nEmail Atualizado");
-            }else if(sub_comando==5){
-                printf("\nDigite o novo numero da casa: ");
-                scanf("%i", &aluno_editado -> endereco_aluno-> numero_casa);
-                printf("\nNumero da casa Atualizado");
-            }else if(sub_comando==6){
-                printf("\nDigite o novo nome da rua: ");
-                scanf("%s", aluno_editado -> endereco_aluno-> nome_rua);
-                printf("\nNome da rua atualizado");
-            }else if(sub_comando==7){
-                printf("\nDigite o novo numero do cep: ");
-                scanf("%i", &aluno_editado -> endereco_aluno-> cep);
-                printf("\nCEP atualizado\n");
-            }else if(sub_comando==8){
+            printf("\nDigite o que deseja acessar\n");
+            int comando = 0, sub_comando = 0;
+            printf("\n1-Aluno\n2- Disciplinas\n3- Sair\n");
+            scanf("%i", &comando);
+            if (comando == 1){
+                printf("\nDigite o que deseja acessar: \n");
+                printf("\n1-Matricula\n2-Nome\n3-Num.TEL \n4-Email \n5-Num.Casa \n6-Rua \n7- CEP\n8-Sair\n");
+                scanf("%i", &sub_comando);
+                if(sub_comando==1){
+                    printf("\nDigite a nova matricula: ");
+                    scanf("%i", &aluno_editado -> matricula);
+                    printf("\nMatricula Atualizada\n");
+                }else if(sub_comando==2){
+                    printf("\nDigite o novo nome: ");
+                    scanf("%s", aluno_editado -> nome_aluno);
+                    printf("\nNome Atualizado");
+                }else if(sub_comando==3){
+                    printf("\nDigite o novo numero de telefone: ");
+                    scanf("%s", aluno_editado -> numero_aluno);
+                    printf("\nNumero de Tel Atualizado");
+                }else if(sub_comando==4){
+                    printf("\nDigite o novo email: ");
+                    scanf("%s", aluno_editado -> email_aluno);
+                    printf("\nEmail Atualizado");
+                }else if(sub_comando==5){
+                    printf("\nDigite o novo numero da casa: ");
+                    scanf("%i", &aluno_editado -> endereco_aluno-> numero_casa);
+                    printf("\nNumero da casa Atualizado");
+                }else if(sub_comando==6){
+                    printf("\nDigite o novo nome da rua: ");
+                    scanf("%s", aluno_editado -> endereco_aluno-> nome_rua);
+                    printf("\nNome da rua atualizado");
+                }else if(sub_comando==7){
+                    printf("\nDigite o novo numero do cep: ");
+                    scanf("%i", &aluno_editado -> endereco_aluno-> cep);
+                    printf("\nCEP atualizado\n");
+                }else if(sub_comando==8){
+                    break;
+                }
+            }else if(comando==2){
+                int y;
+                for(y=0; y<aluno_editado->quantidade_disciplinas;y++){
+                    printf("\n%i-%s",y,aluno_editado->disciplinas[y]->nome_disciplina);
+                }
+                printf("\nEscolha a Disciplina: ");
+                scanf("%i", &y);
+                printf("\nDigite o que deseja acessar: \n");
+                printf("\n1-Codigo da disciplina\n2-Nome da disciplina\n3-Nota da Disciplina\n");
+                scanf("%i", &sub_comando);
+                if(sub_comando==1){
+                    printf("\nDigite o novo Cod. Da Disc: ");
+                    scanf("%i", &aluno_editado->disciplinas[y]->codigo_disciplina);
+                    printf("\nCod. Atualizado");
+                    
+                }else if(sub_comando==2){
+                    printf("\nDigite o novo nome da Disc: ");
+                    scanf("%s", aluno_editado -> disciplinas[y] -> nome_disciplina);
+                    printf("\nNome Atualizado");
+                }else if(sub_comando==3){
+                    printf("\nDigite a nova nota da Disc: "); 
+                    scanf("%f", &aluno_editado->disciplinas[y]->nota_final_disciplina);
+                    printf("\nNota Atualizada");
+                }
+            }else if(comando ==3){
                 break;
             }
-        }else if(comando==2){
-            int y;
-            for(y=0; y<aluno_editado->quantidade_disciplinas;y++){
-                printf("\n%i-%s",y,aluno_editado->disciplinas[y]->nome_disciplina);
-            }
-            printf("Escolha a Disciplina: ");
-            scanf("%i", &y);
-            printf("\nDigite o que deseja acessar: \n");
-            printf("\n1-Codigo da disciplina\n2-Nome da disciplina\n3-Nota da Disciplina");
-            scanf("%i", &sub_comando);
-            if(sub_comando==1){
-                printf("\nDigite o novo Cod. Da Disc: ");
-                scanf("%i", &aluno_editado->disciplinas[y]->codigo_disciplina);
-                printf("\nCod. Atualizado");
-                
-            }else if(sub_comando==2){
-                printf("\nDigite o novo nome da Disc: ");
-                scanf("%s", aluno_editado -> disciplinas[y] -> nome_disciplina);
-                printf("\nNome Atualizado");
-            }else if(sub_comando==3){
-                printf("\nDigite a nova nota da Disc: "); 
-                scanf("%f", &aluno_editado->disciplinas[y]->nota_final_disciplina);
-                printf("\nNota Atualizada");
-            }
-        }else if(comando ==3){
-            break;
+            
         }
-           
-        
-        }
-        }
-
     }
+}
+
+// função que realiza a troca entre duas disciplinas
+void troca(disciplina** vet, int i, int j){
+	disciplina* aux = malloc(sizeof(disciplina));
+    aux->nome_disciplina = malloc(sizeof(char)*200);
+
+    aux->codigo_disciplina = vet[i]->codigo_disciplina;
+    aux->nota_final_disciplina = vet[i]->nota_final_disciplina;
+    strcpy(aux->nome_disciplina,vet[i]->nome_disciplina);
+    
+    vet[i]->codigo_disciplina = vet[j]->codigo_disciplina;
+    vet[i]->nota_final_disciplina = vet[j]->nota_final_disciplina;
+    strcpy(vet[i]->nome_disciplina,vet[j]->nome_disciplina);
+
+    vet[j]->codigo_disciplina = aux->codigo_disciplina;
+    vet[j]->nota_final_disciplina = aux->nota_final_disciplina;
+    strcpy(vet[j]->nome_disciplina,aux->nome_disciplina);
+}
+
+// particiona e retorna o índice do pivô
+int particiona(disciplina** vet, int inicio, int fim){
+    float pivo, pivo_indice;
+    int i;
+	
+	pivo = vet[fim]->nota_final_disciplina; // o pivô é sempre o último elemento
+	pivo_indice = inicio;
+	
+	for(i = inicio; i < fim; i++){
+		// verifica se o elemento é <= ao pivô
+		if(vet[i] ->nota_final_disciplina >= pivo){
+			// realiza a troca
+			troca(vet, i, pivo_indice);
+			// incrementa o pivo_indice
+			pivo_indice++;
+		}
+	}
+	
+	// troca o pivô
+	troca(vet, pivo_indice, fim);
+	
+	// retorna o índice do pivô
+	return pivo_indice;
+}
+
+// escolhe um pivô aleatório para evitar o pior caso do quicksort
+int pivo(disciplina** vet, int inicio, int fim){
+	// seleciona um número entre fim (inclusive) e inicio (inclusive)
+	int pivo_indice = (rand() % (fim - inicio + 1)) + inicio;
+	
+	// faz a troca para colocar o pivô no fim
+	troca(vet, pivo_indice, fim);
+	// chama a particiona
+	return particiona(vet, inicio, fim);
+}
+
+void quick_sort(disciplina** vet, int inicio, int fim){
+	if(inicio <fim){
+		// função particionar retorna o índice do pivô
+		int pivo_indice = pivo(vet, inicio, fim);
+		
+		// chamadas recursivas quick_sort
+		quick_sort(vet, inicio, pivo_indice - 1);
+		quick_sort(vet, pivo_indice + 1, fim);
+	}
+}
 
 
 void imprimir_aluno(int matricula){
@@ -196,6 +259,12 @@ void imprimir_aluno(int matricula){
         printf("\nCEP do aluno:  %i", aluno_impresso->endereco_aluno->cep);
         printf("\nNome da rua: %s", aluno_impresso->endereco_aluno->nome_rua);
         printf("\nNumero da casa: %i", aluno_impresso->endereco_aluno->numero_casa);
+        quick_sort(aluno_impresso->disciplinas,0,(aluno_impresso->quantidade_disciplinas)-1);
+        for(int i = 0; i < aluno_impresso->quantidade_disciplinas ;i++){
+            printf("\n%i",aluno_impresso->disciplinas[i]->codigo_disciplina);
+            printf("\n%s",aluno_impresso->disciplinas[i]->nome_disciplina);
+            printf("\n%f",aluno_impresso->disciplinas[i]->nota_final_disciplina);
+        }
     }
 }
 void read_banco_de_dados(FILE *banco_de_dados){//ok
