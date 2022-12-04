@@ -61,51 +61,43 @@ void editar_aluno(int matricula){
     aluno * aluno_editado = buscar_dados_aluno(raiz , matricula);
     while (1){
         int comando = 0, sub_comando = 0;
-        int novo_inteiro;
-        float novo_float;
-        char nova_str[200];
         printf("Digite o que deseja acessar");
         printf("\n1-Aluno\n2- Disciplinas\n3- Sair\n");
         scanf("%i", &comando);
         if (comando == 1){
             printf("\nDigite o que deseja acessar: \n");
-            printf("\n1-Matricula\n2-Nome\n3-Num.TEL \n4-Email \n5-Num.Casa \n6-Rua \n7- CEP\n");
+            printf("\n1-Matricula\n2-Nome\n3-Num.TEL \n4-Email \n5-Num.Casa \n6-Rua \n7- CEP\n8-Sair\n");
             scanf("%i", &sub_comando);
             if(sub_comando==1){
                 printf("\nDigite a nova matricula: ");
-                scanf("%i", &novo_inteiro);
+                scanf("%i", &aluno_editado -> matricula);
                 printf("\nMatricula Atualizada");
-                aluno_editado -> matricula=novo_inteiro;
             }else if(sub_comando==2){
                 printf("\nDigite o novo nome: ");
-                scanf("%s", nova_str);
+                scanf("%s", aluno_editado -> nome_aluno);
                 printf("\nNome Atualizado");
-                strcpy(aluno_editado -> nome_aluno,nova_str);
             }else if(sub_comando==3){
                 printf("\nDigite o novo numero de telefone: ");
-                scanf("%s", nova_str);
+                scanf("%s", aluno_editado -> numero_aluno);
                 printf("\nNumero de Tel Atualizado");
-                strcpy(aluno_editado -> numero_aluno,nova_str);
             }else if(sub_comando==4){
                 printf("\nDigite o novo email: ");
-                scanf("%s", nova_str);
+                scanf("%s", aluno_editado -> email_aluno);
                 printf("\nEmail Atualizado");
-                strcpy(aluno_editado -> email_aluno , nova_str);
             }else if(sub_comando==5){
                 printf("\nDigite o novo numero da casa: ");
-                scanf("%i", &novo_inteiro);
+                scanf("%i", &aluno_editado -> endereco_aluno-> numero_casa);
                 printf("\nNumero da casa Atualizado");
-                aluno_editado -> endereco_aluno-> numero_casa = novo_inteiro;
             }else if(sub_comando==6){
                 printf("\nDigite o novo nome da rua: ");
-                scanf("%s", nova_str);
+                scanf("%s", aluno_editado -> endereco_aluno-> nome_rua);
                 printf("\nNome da rua atualizado");
-                strcpy(aluno_editado -> endereco_aluno-> nome_rua,nova_str);
             }else if(sub_comando==7){
                 printf("\nDigite o novo numero do cep: ");
-                scanf("%i", &novo_inteiro);
+                scanf("%i", &aluno_editado -> endereco_aluno-> cep);
                 printf("\nCEP atualizado\n");
-                aluno_editado -> endereco_aluno-> cep = novo_inteiro;
+            }else if(sub_comando==8){
+                break;
             }
         }else if(comando==2){
             int y;
@@ -119,19 +111,16 @@ void editar_aluno(int matricula){
             scanf("%i", &sub_comando);
             if(sub_comando==1){
                 printf("\nDigite o novo Cod. Da Disc: ");
-                scanf("%i", &novo_inteiro);
-                aluno_editado->disciplinas[y]->codigo_disciplina = novo_inteiro;
+                scanf("%i", &aluno_editado->disciplinas[y]->codigo_disciplina);
                 printf("\nCod. Atualizado");
                 
             }else if(sub_comando==2){
                 printf("\nDigite o novo nome da Disc: ");
-                scanf("%s", nova_str);
-                strcpy(aluno_editado -> disciplinas[y] -> nome_disciplina, nova_str);
+                scanf("%s", aluno_editado -> disciplinas[y] -> nome_disciplina);
                 printf("\nNome Atualizado");
             }else if(sub_comando==3){
                 printf("\nDigite a nova nota da Disc: ");
-                scanf("%f", &novo_float);
-                aluno_editado->disciplinas[y]->nota_final_disciplina = novo_float;
+                scanf("%f", &aluno_editado->disciplinas[y]->nota_final_disciplina);
                 printf("\nNota Atualizada");
             }
         }else if(comando ==3){
