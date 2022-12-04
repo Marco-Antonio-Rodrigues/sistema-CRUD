@@ -178,8 +178,21 @@ void editar_aluno(int matricula){
         }
 
 
-void imprimir_aluno(int matricula);
-
+void imprimir_aluno(int matricula){
+    aluno* aluno_impresso = buscar_dados_aluno(raiz, matricula);
+    if(aluno_impresso == NULL){
+        printf("\nAluno não encontrado");
+    }else{
+        printf("\nMatricula:%i",aluno_impresso -> matricula);
+        printf("\nNome:%s", aluno_impresso ->nome_aluno);
+        printf("\nNumero do Aluno:%s", aluno_impresso->numero_aluno);
+        printf("\nEmail: %s", aluno_impresso->email_aluno);
+        printf("\nQuantidades de disciplinas: %i",aluno_impresso->quantidade_disciplinas);
+        printf("\nCEP do aluno:  %i", aluno_impresso->endereco_aluno->cep);
+        printf("\nNome da rua: %s", aluno_impresso->endereco_aluno->nome_rua);
+        printf("\nNumero da casa: %i", aluno_impresso->endereco_aluno->numero_casa);
+    }
+}
 void read_banco_de_dados(FILE *banco_de_dados){//ok
     int aux, matricula, codigo_disciplina;
     float nota_final_disciplina;
@@ -239,7 +252,7 @@ void write_banco_de_dados(FILE *backup){
 int main(){
     FILE* banco_de_dados = fopen("banco_de_dados.txt","r");
     FILE* backup = fopen("backup.txt","w");
-    read_banco_de_dados(banco_de_dados);
+    // read_banco_de_dados(banco_de_dados);
     int matricula, menu;
     
     while (1){
@@ -278,11 +291,11 @@ int main(){
         }else if(menu == 3){//remover aluno
             printf("\nDigite a matricula: ");
             scanf("%i",&matricula);
-            // remover_aluno(raiz,matricula);
+            remover_aluno(raiz,matricula);
         }else if(menu == 4){//ver aluno
             printf("\nDigite a matricula: ");
             scanf("%i",&matricula);
-            //imprimir aluno
+            imprimir_aluno(matricula);
         }else if(menu == 5){//sair
             printf("\nFazendo Backup...encerrando sessao.");
             break;
