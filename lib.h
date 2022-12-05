@@ -79,4 +79,21 @@ void in_ordem(aluno* aux, FILE *backup);
 // salva a arvore no arquivo texto
 void write_banco_de_dados(FILE *backup);
 
+// explicando banco_de_dados.txt
+// 1   --primeira linha do arquivo fala quantos alunos tem
+// 511354 --primeira linha do aluno/matricula
+// marco --nome
+// 85994189459 --numero telefone
+// marco@gmail.com --email
+// 1230 -- numero da residencia
+// rua_sebastiao -- rua do endereco
+// 638888 -- cep do endereco
+// 2 --quantidade de disciplinas
+// 17 -- primeira linha da disciplina/codigo
+// estrutura_de_dados -- nome da disciplina
+// 10.000000 -- nota final da disciplina
+// 18 --codigo
+// laboratorio_de_programacao --nome da disciplina
+// 9.000000 --nota final da disciplina
+//aqui ou poderia ter mais uma disciplina se fosse 3 ou comecaria outro aluno se a primeira linhha fosse 2
 #endif
